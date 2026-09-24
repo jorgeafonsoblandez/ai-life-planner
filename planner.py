@@ -153,7 +153,8 @@ Logistics/Constraints: {json.dumps(config.get('logistics', {}))}
 5. IMPORTANT: Telegram's HTML parser is incredibly strict. ONLY use <b> and <i> tags. Do NOT use <ul>, <li>, <br>, <p>, or headers. Use standard text bullets (-) for lists. CRITICAL: Do NOT use the `<` or `>` math symbols anywhere in your text (e.g., write 'under $100' instead of '<$100'), as it crashes the HTML parser.
 6. LENGTH: {config.get('preferences', {}).get('message_length', 'Keep the total message under 3000 characters.')}
 7. Adopt this exact persona/tone: "{config.get('preferences', {}).get('tone', 'Friendly and concise.')}"
-8. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
+8. Do NOT ask follow-up questions or say things like "Let me know if you need help". This is a one-way notification and the user cannot reply to you. End the message definitively.
+9. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
 """
 
     max_retries = 5
