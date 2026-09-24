@@ -1,0 +1,48 @@
+name: AI Life Planner
+
+on:
+  workflow_dispatch: {} # Gives you a manual 'Run' button in the Actions tab
+  schedule:
+    # Runs automatically every Thursday at 05:00 UTC
+    - cron: '0 5 * * 4'
+
+jobs:
+  plan-my-weekend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache Memory State
+        uses: actions/cache@v4
+        with:
+          path: memory.json
+          key: planner-memory-${{ github.run_id }}
+          restore-keys: |
+            planner-memory-
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Load Private Config (Optional)
+        env:
+          CONFIG_JSON: ${{ secrets.CONFIG_JSON }}
+        run: |
+          if [ -n "$CONFIG_JSON" ]; then
+            echo "$CONFIG_JSON" > config.json
+            echo "Loaded private config from secrets."
+          else
+            echo "No CONFIG_JSON secret found. Will fallback to config.example.json."
+          fi
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Planner
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python planner.py

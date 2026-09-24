@@ -1,0 +1,49 @@
+{
+  "user": {
+    "name": "Jorge",
+    "location": "Auckland, New Zealand",
+    "coordinates": {
+      "lat": -36.8485,
+      "lon": 174.7633
+    }
+  },
+  "schedule": {
+    "free_days": [
+      "Saturday",
+      "Sunday"
+    ]
+  },
+  "interests": {
+    "outdoors": [
+      "Hiking",
+      "Cycling",
+      "Running"
+    ],
+    "social": [
+      "Tech events",
+      "Live music",
+      "Pubs",
+      "English classes"
+    ]
+  },
+  "quests": [
+    "I want to buy a used couch under $100",
+    "I am looking for a junior developer job",
+    "I want to find a new house to rent"
+  ],
+  "data_sources": {
+    "subreddits": [
+      "auckland",
+      "newzealand"
+    ]
+  },
+  "preferences": {
+    "language": "English",
+    "tone": "Friendly, highly actionable, concise, and enthusiastic. Use emojis."
+  },
+  "logistics": {
+    "transportation": "I use public transit and walk. I do not have a car.",
+    "budget": "Prefer free or cheap activities. Max $50 for the weekend.",
+    "dietary": "No restrictions"
+  }
+}
