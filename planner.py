@@ -149,7 +149,7 @@ Logistics/Constraints: {json.dumps(config.get('logistics', {}))}
 2. Review the Community Knowledge. If there are any posts relevant to their 'Quests' or 'Hobbies', alert them!
 3. Formulate a cohesive, structured message summarizing their upcoming free days and any opportunities they should act on.
 4. IMPORTANT: Telegram's HTML parser is incredibly strict. ONLY use <b> and <i> tags. Do NOT use <ul>, <li>, <br>, <p>, or headers. Use standard text bullets (-) for lists. Always double-check that your tags are closed properly (e.g. <b>text</b>). Do not use markdown like **bold**.
-5. Keep the total message under 3000 characters.
+5. LENGTH: {config.get('preferences', {}).get('message_length', 'Keep the total message under 3000 characters.')}
 6. Adopt this exact persona/tone: "{config.get('preferences', {}).get('tone', 'Friendly and concise.')}"
 7. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
 """

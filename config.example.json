@@ -34,12 +34,15 @@
   "data_sources": {
     "subreddits": [
       "auckland",
-      "newzealand"
+      "newzealand",
+      "technology",
+      "hiking"
     ]
   },
   "preferences": {
     "language": "English",
-    "tone": "Friendly, highly actionable, concise, and enthusiastic. Use emojis."
+    "tone": "Friendly, highly actionable, concise, and enthusiastic. Use emojis.",
+    "message_length": "Keep it very short and punchy. Maximum 3 bullet points."
   },
   "logistics": {
     "transportation": "I use public transit and walk. I do not have a car.",
