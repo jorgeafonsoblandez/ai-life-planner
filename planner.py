@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import requests
+import time
 from datetime import datetime
 from dotenv import load_dotenv
 from google import genai
@@ -155,19 +156,26 @@ Logistics/Constraints: {json.dumps(config.get('logistics', {}))}
 8. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
 """
 
-    try:
-        client = genai.Client(api_key=GEMINI_API_KEY)
-        response = client.models.generate_content(
-            model='gemini-3.6-flash',
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.7
+    max_retries = 5
+    for attempt in range(max_retries):
+        try:
+            client = genai.Client(api_key=GEMINI_API_KEY)
+            response = client.models.generate_content(
+                model='gemini-3.6-flash',
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.7
+                )
             )
-        )
-        return response.text
-    except Exception as e:
-        print(f"❌ AI Generation failed: {e}")
-        return None
+            return response.text
+        except Exception as e:
+            print(f"⚠️ AI Generation attempt {attempt + 1} failed: {e}")
+            if attempt < max_retries - 1:
+                print("⏳ Waiting 60 seconds before retrying due to high demand...")
+                time.sleep(60)
+            else:
+                print("❌ Max retries reached. AI is currently unavailable.")
+                return None
 
 def main():
     print("🚀 Starting AI Life Planner...")
@@ -191,6 +199,10 @@ def main():
             print("✅ Planner run complete!")
         else:
             print("⚠️ Memory not saved due to delivery failure.")
+            sys.exit(1)
+    else:
+        print("❌ Could not generate plan. Exiting.")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
