@@ -149,7 +149,7 @@ Logistics/Constraints: {json.dumps(config.get('logistics', {}))}
 1. Analyze the weather for their free days. If it's sunny, suggest an outdoor hobby. If raining, suggest indoor. Mention transportation constraints!
 2. For their 'Quests', do NOT just repeat the goals back to them. Suggest highly specific, actionable steps, real websites, actual companies, or creative strategies they can use this weekend to achieve them.
 3. Review the Community Knowledge. If there are any posts relevant to their 'Quests' or 'Hobbies', alert them!
-4. Include a 'News Digest' section highlighting 2-3 SPECIFIC, real posts from the 'NEW COMMUNITY KNOWLEDGE' data provided. Do not invent general news. If the data is empty, state there are no new updates.
+4. If the 'NEW COMMUNITY KNOWLEDGE' data is NOT empty, include a 'News Digest' section highlighting 2-3 SPECIFIC, real posts. If the data is empty, completely omit the News Digest section (do not even mention it).
 5. IMPORTANT: Telegram's HTML parser is incredibly strict. ONLY use <b> and <i> tags. Do NOT use <ul>, <li>, <br>, <p>, or headers. Use standard text bullets (-) for lists. CRITICAL: Do NOT use the `<` or `>` math symbols anywhere in your text (e.g., write 'under $100' instead of '<$100'), as it crashes the HTML parser.
 6. LENGTH: {config.get('preferences', {}).get('message_length', 'Keep the total message under 3000 characters.')}
 7. Adopt this exact persona/tone: "{config.get('preferences', {}).get('tone', 'Friendly and concise.')}"
