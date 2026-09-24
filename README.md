@@ -9,12 +9,12 @@ The Planner is built around a single `config.json` file where you define your "L
 - **Who and Where:** Your location (for weather).
 - **Logistics:** Do you have a car? What is your budget? 
 - **Quests:** What are you currently looking for? (e.g., "Buying a used couch", "Finding a tech job").
-- **Preferences:** What language and tone should the AI use?
+- **Preferences:** What language, tone, and length should the AI use? (e.g., "Spanish, sarcastic, max 3 bullet points").
 
 ### The Data Engine
 When the script runs, it fetches:
 1. **Weather:** A free, hyper-local forecast for your coordinates via Open-Meteo.
-2. **Community News:** Top posts from your local Subreddits (e.g., `r/auckland`) to find real, underground events, news, or deals.
+2. **Community News:** Top posts from your configured Subreddits (e.g., `r/auckland` for local events, or `r/technology` for your hobbies) to find real, high-signal news and deals.
 3. **Memory State:** It remembers what it has already told you, so it never bothers you with the same Reddit post or deal twice!
 4. **Time Context:** It injects the current date into the AI prompt so it knows what "tomorrow" means.
 
