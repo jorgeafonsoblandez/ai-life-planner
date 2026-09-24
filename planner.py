@@ -148,10 +148,11 @@ Logistics/Constraints: {json.dumps(config.get('logistics', {}))}
 1. Analyze the weather for their free days. If it's sunny, suggest an outdoor hobby. If raining, suggest indoor. Mention transportation constraints!
 2. Review the Community Knowledge. If there are any posts relevant to their 'Quests' or 'Hobbies', alert them!
 3. Formulate a cohesive, structured message summarizing their upcoming free days and any opportunities they should act on.
-4. IMPORTANT: Telegram's HTML parser is incredibly strict. ONLY use <b> and <i> tags. Do NOT use <ul>, <li>, <br>, <p>, or headers. Use standard text bullets (-) for lists. Always double-check that your tags are closed properly (e.g. <b>text</b>). Do not use markdown like **bold**.
-5. LENGTH: {config.get('preferences', {}).get('message_length', 'Keep the total message under 3000 characters.')}
-6. Adopt this exact persona/tone: "{config.get('preferences', {}).get('tone', 'Friendly and concise.')}"
-7. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
+4. Include a 'News Digest' bullet point summarizing interesting updates or news from their hobbies and interests.
+5. IMPORTANT: Telegram's HTML parser is incredibly strict. ONLY use <b> and <i> tags. Do NOT use <ul>, <li>, <br>, <p>, or headers. Use standard text bullets (-) for lists. Always double-check that your tags are closed properly (e.g. <b>text</b>). Do not use markdown like **bold**.
+6. LENGTH: {config.get('preferences', {}).get('message_length', 'Keep the total message under 3000 characters.')}
+7. Adopt this exact persona/tone: "{config.get('preferences', {}).get('tone', 'Friendly and concise.')}"
+8. Write the response in this language: "{config.get('preferences', {}).get('language', 'English')}"
 """
 
     try:
